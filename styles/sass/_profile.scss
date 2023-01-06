@@ -1,0 +1,63 @@
+.profile {
+    margin: 4rem auto;
+    width: 60%;
+
+    &__details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        border: 1px solid rgba($color-primary, 0.8);
+        box-shadow: 0 1rem 2rem rgba($color-primary, 0.2);
+        border-radius: 15px;
+    }
+
+    &__picture {
+        margin: 2rem auto;
+
+        &-img {
+            width: 14rem;
+            border-radius: 50%;
+            object-fit: cover;
+            height: 14rem;
+        }
+
+        &-username {
+            margin: 1rem;
+            font-size: 1.8rem !important;
+        }
+    }
+
+    &__stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+
+        & > * {
+            align-self: center;
+            justify-self: center;
+        }
+
+    }
+
+    &__posts {
+        display: grid;  
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        margin-top: 6rem;
+        
+        border: 1px solid rgba($color-primary, 0.8);
+        box-shadow: 0 1rem 2rem rgba($color-primary, 0.2);
+        border-radius: 15px;
+    }
+
+    &__post {
+        width: 90%;
+        height: 22rem;
+        margin: 1rem;
+    }
+}
+
+.profile-btn {
+    grid-column: 1 / 4;
+    align-self: center;
+    justify-self: center;
+    padding: 1rem 2rem;
+}
