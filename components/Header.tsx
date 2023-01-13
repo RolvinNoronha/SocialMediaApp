@@ -7,6 +7,7 @@ export default function Header() {
     const router = useRouter();
 
     function logout() {
+        localStorage.removeItem("uid");
         signOut(auth).then(() => { router.push("/") })
     }
 

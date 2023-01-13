@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, serverTimestamp, updateDoc  } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Dispatch, SetStateAction, useState } from "react";
 import { auth, db, storage } from "../lib/Firebase";
@@ -12,29 +12,39 @@ export default function Modal({ show, setShow } : Props) {
 
     const [img, setImg] = useState<Blob>();
     const [caption, setCaption] = useState<string>("");
-    const user = auth.currentUser;
     const storageRef = ref(storage);
-    const imagesRef = ref(storageRef, 'images');
 
-    console.log(user?.uid)
+    function closeModal() {
+        setCaption("");
+        setImg(undefined);
+
+        setShow(false);
+    }
 
     const handleSubmit : React.FormEventHandler<HTMLFormElement> = async (e)  => {
         e.preventDefault();
-    
+        const user = auth.currentUser;
+        
+        const docRef = await addDoc(collection(db, "posts"), {
+            userimg: user?.photoURL,
+            username: user?.displayName,
+            postId: localStorage.getItem("uid"),
+            caption: caption,
+            timestamp: serverTimestamp(),
+        })
+        
+        const imgRef = ref(storageRef, `posts/${docRef.id}/image`);
+
         //@ts-ignore
-        uploadBytes(imagesRef, img).then(async (snapshot) => { 
+        uploadBytes(imgRef, img).then(async (snapshot) => { 
             getDownloadURL(snapshot.ref).then( async (downloadURL) => {
-                //@ts-ignore
-                const docRef = await addDoc(collection(db, "users", user?.uid, "posts"), {
-                    post: downloadURL
+                await updateDoc(doc(db, "posts", docRef.id), {
+                    post: downloadURL,
                 }) 
             });
         });
-    }
 
-
-    function closeModal() {
-        setShow(false);
+        closeModal();
     }
 
 
