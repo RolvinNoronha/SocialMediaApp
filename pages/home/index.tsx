@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { collection, DocumentData, getDocs, orderBy, query, QueryDocumentSnapshot, where } from "firebase/firestore";
 import PostStats from "../../components/PostStats";
 import Comments from "../../components/Comments";
-import { parentPort } from "worker_threads";
 
 
 export default function Home() {
@@ -26,19 +25,38 @@ export default function Home() {
             const id = localStorage.getItem("uid");
             
             if (id) {
-                const q = query(collection(db, "posts"), where("postId", "==", id), orderBy("timestamp", "desc"))
-                const querySnapshot = await getDocs(q);
-                setPosts(querySnapshot.docs);
+                const q1 = query(collection(db, "posts"), where("postId", "==", id), orderBy("timestamp", "desc"))
+                const querySnapshot1 = await getDocs(q1);
+                setPosts(querySnapshot1.docs);
             }
         }
 
+        async function getFollowingData() {
+            const id = localStorage.getItem("uid");
+            if (id) {
 
+                const q = query(collection(db, "users", id, "following"));
+                const querySnapshot = await getDocs(q);
+
+                querySnapshot.forEach(async doc => {
+                    const q = query(collection(db, "posts"), where("postId", "==", doc.data().userid), orderBy("timestamp", "desc"))
+                    const snapshot = await getDocs(q);
+                    setPosts(prevPosts => {
+                        let Posts = [...snapshot.docs, ...prevPosts];
+                        Posts.filter((item, index) => Posts.indexOf(item) === index);
+                        return Posts;
+                    })
+                })
+            }
+        }
+
+        getFollowingData();
         getData();
     }, [])
 
     return <div className="home">
         {posts.map(post => {
-            return <div className="home-post" key={post.id}>
+            return <div key={post.id} className="home-post">
                 
                 <img className="home__img" src={post.data().post} alt="image" />
                 <div className="home__interact">

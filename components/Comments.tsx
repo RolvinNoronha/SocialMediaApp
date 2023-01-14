@@ -18,13 +18,13 @@ export default function Comments({ postId } : {postId: string}) {
 
     return <div className="home__comments">
         {comments.map(comment => {
-            return <>
-            <div key={comment.id} className="home__comments-imguser">
+            return <div key={comment.id}>
+            <div className="home__comments-imguser">
                 <img className="home__comments-img" src={comment.data().userimg} alt="image" />
                 <p className="home__comments-user">{comment.data().username}</p>
             </div>
             <p className="home__comments-comment">{comment.data().comment}</p>
-        </>
+        </div>
         })}
     </div>
 

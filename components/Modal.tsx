@@ -67,6 +67,7 @@ export default function Modal({ show, setShow } : Props) {
                 onChange={(e) => setCaption(e.target.value)} 
                 className="modal__caption" 
                 type="text" 
+                value={caption}
                 placeholder="Add a caption...." 
             />
             
