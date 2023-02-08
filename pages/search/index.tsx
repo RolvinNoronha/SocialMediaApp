@@ -1,8 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { addDoc, collection, deleteDoc, doc, DocumentData, getDocs, query, QueryDocumentSnapshot, where } from "firebase/firestore";
-import Link from "next/link";
+import {  collection, DocumentData, getDocs, query, QueryDocumentSnapshot, where } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { FormEvent, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import SearchResults from "../../components/SearchResults";
 import { auth, db } from "../../lib/Firebase";
 
@@ -35,6 +34,7 @@ export default function Search() {
                 <input onChange={(e) => setInput(e.target.value)} value={input} className="searchbox-input" type="text" placeholder="Search" />
                 <button className="btn search-btn" type="submit">Search</button>
             </form>
+            {!results && <p>No User Found</p>}
             {results.map((result) => {
                 return <SearchResults key={result.id} result={result} />
             })}

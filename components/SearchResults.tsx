@@ -1,4 +1,4 @@
-import { addDoc, aggregateQuerySnapshotEqual, collection, deleteDoc, doc, DocumentData, getDocs, query, QueryDocumentSnapshot, where } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, DocumentData, getDocs, query, QueryDocumentSnapshot, where } from "firebase/firestore";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { db } from "../lib/Firebase";

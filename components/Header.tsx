@@ -18,6 +18,7 @@ export default function Header() {
 
     function logout() {
         localStorage.removeItem("uid");
+        setIsLogged(false);
         signOut(auth).then(() => { router.push("/") })
     }
 

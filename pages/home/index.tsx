@@ -33,6 +33,7 @@ export default function Home() {
 
         async function getFollowingData() {
             const id = localStorage.getItem("uid");
+
             if (id) {
 
                 const q = query(collection(db, "users", id, "following"));
@@ -42,16 +43,16 @@ export default function Home() {
                     const q = query(collection(db, "posts"), where("postId", "==", doc.data().userid), orderBy("timestamp", "desc"))
                     const snapshot = await getDocs(q);
                     setPosts(prevPosts => {
-                        let Posts = [...snapshot.docs, ...prevPosts];
-                        Posts.filter((item, index) => Posts.indexOf(item) === index);
-                        return Posts;
+                        return [...snapshot.docs, ...prevPosts];
                     })
                 })
             }
         }
 
-        getFollowingData();
-        getData();
+        return (() => {
+            getFollowingData();
+            getData();
+        })
     }, [])
 
     return <div className="home">

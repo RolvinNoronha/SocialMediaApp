@@ -1,5 +1,5 @@
 import { collection, getDocs, onSnapshot, query, where } from "firebase/firestore";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { db } from "../lib/Firebase";
 import Modal from "./Modal";
 
