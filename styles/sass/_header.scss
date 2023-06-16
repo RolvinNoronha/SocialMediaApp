@@ -3,14 +3,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 2.5rem;
-    text-transform: uppercase;
     background-color: $color-secondary;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 
 
     &__title {
         font-size: 3.2rem;
-        text-transform: uppercase;
         text-decoration: none;
         color: $color-primary;
     }
@@ -18,19 +16,23 @@
     &__links {
         display: flex;
         align-items: center;
+        font-size: 1.8rem;
+
+        @media only screen and (max-width: $sw-small) {
+            display: none;
+            
+        }
         
         &-search {
             text-decoration: none;
             color: $color-primary;
             margin-right: 1.2rem;
-            font-size: 1.4rem;
         }
 
         &-profile {
             text-decoration: none;
             color: $color-primary;
             margin-right: 1.2rem;
-            font-size: 1.4rem;
         }
 
         
@@ -38,7 +40,7 @@
 }
 
 .btn-header {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     padding: 1rem 1.8rem;
     border-radius: 10px;
 }

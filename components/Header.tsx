@@ -23,7 +23,7 @@ export default function Header() {
     }
 
     return <div className="header">
-        <Link className="header__title" href="/home">Intclone</Link>
+        <Link className="header__title" href="/home">SocialMediaApp</Link>
         {
             isLogged && 
             <div className="header__links">

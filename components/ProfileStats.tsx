@@ -37,7 +37,8 @@ export default function ProfileStats() {
                 <h2 className="heading-h2 mb-sm">Following</h2>
                 <p className="text">{followCount}</p>
             </div>
-            <button onClick={() => setShow(true)} className="btn profile-btn">Post</button>
+            <button onClick={() => setShow(true)} className="btn profile-btn post-btn">Post</button>
+            <button className="btn profile-btn change-profile">Change Profile</button>
             <Modal show={show} setShow={setShow} />
         </div>
     );

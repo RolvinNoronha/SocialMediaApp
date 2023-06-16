@@ -5,6 +5,10 @@
     justify-content: flex-start;
     align-items: center;
 
+    @media only screen and (max-width: $sw-largest) {
+        margin: 4rem 0;
+    } 
+
     &__results {
         width: 50%;
         margin: 2rem 0;
@@ -13,19 +17,54 @@
         align-items: center;
         border-bottom: 1px solid rgb(182, 182, 182);
 
+        @media only screen and (max-width: $sw-largest) {
+            width: 60%;
+        }
+
+        @media only screen and (max-width: $sw-large) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        
+        @media only screen and (max-width: $sw-small) {
+            grid-template-columns: none;
+        }
+
         &-userImg {
             display: flex;
             align-items: center;
+
+            @media only screen and (max-width: $sw-large) {
+                grid-column: 1 / 2;
+            }
         }
 
+        &__post-count {
+
+            @media only screen and (max-width: $sw-large) {
+                grid-column: 2/3
+            }
+        }
+
+        &__follow-count {
+            @media only screen and (max-width: $sw-large) {
+                
+            }
+
+        }
         & > * {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             margin: 1.2rem; 
         }
 
         & > button {
             padding: 1.2rem;
             border-radius: 10px;
+            
+            @media only screen and (max-width: $sw-large) {
+                grid-row: 2/3;
+            }
         }
 
         &-img {
@@ -39,7 +78,7 @@
             
             &:link,
             &:visited {
-                font-size: 1.4rem;
+                font-size: 1.6rem;
                 text-decoration: none;
                 color: $color-primary;
             }
@@ -49,17 +88,30 @@
 }
 
 .searchbox {
-    width: 50%;
+    width: 70%;
     margin-bottom: 2rem;
+
+
+    @media only screen and (max-width: $sw-largest) {
+        width: 80%;
+    } 
+
 
     &-input {
         width: 85%;
         border: 1px solid rgb(182, 182, 182);
         padding: 1.4rem;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         border-top-left-radius: 100px;
         border-bottom-left-radius: 100px;
 
+        @media only screen and (max-width: $sw-largest) {
+            width: 80%;
+        } 
+
+        @media only screen and (max-width: $sw-small) {
+            width: 60%;
+        }
 
         &:focus {
             box-shadow: 0 0 0.8rem rgba($color-primary, 0.4);
@@ -73,7 +125,8 @@
 
 .search-btn {
     padding: 1.4rem 2.5rem;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
+
 }

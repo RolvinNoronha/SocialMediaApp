@@ -72,8 +72,8 @@ export default function SearchResults({ result } : Props) {
                 <img className="search__results-img" src={result.data().img} alt="profile" />
                 <Link href={`search/${result.id}`} className="search__results-name">{result.data().name}</Link>
             </div>
-            <p>Posts: {postCount}</p>
-            <p>Following: {followCount}</p>
+            <p className="search__post-count">Posts: {postCount}</p>
+            <p className="search__follow-count">Following: {followCount}</p>
             <button onClick={() => handleFollow(result.id, result.data().name)} className="btn"type="button">{isFollowing ? "Unfollow" : "Follow"}</button>
         </div>
 }

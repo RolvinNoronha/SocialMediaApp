@@ -12,6 +12,11 @@ html {
   font-size: 62.5%;
   font-family: "Roboto", sans-serif;
 }
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 50%;
+  }
+}
 
 .sign-in {
   text-align: center;
@@ -29,35 +34,37 @@ html {
   justify-content: space-between;
   align-items: center;
   padding: 2.5rem;
-  text-transform: uppercase;
   background-color: #eeeeee;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 .header__title {
   font-size: 3.2rem;
-  text-transform: uppercase;
   text-decoration: none;
   color: #171717;
 }
 .header__links {
   display: flex;
   align-items: center;
+  font-size: 1.8rem;
+}
+@media only screen and (max-width: 500px) {
+  .header__links {
+    display: none;
+  }
 }
 .header__links-search {
   text-decoration: none;
   color: #171717;
   margin-right: 1.2rem;
-  font-size: 1.4rem;
 }
 .header__links-profile {
   text-decoration: none;
   color: #171717;
   margin-right: 1.2rem;
-  font-size: 1.4rem;
 }
 
 .btn-header {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   padding: 1rem 1.8rem;
   border-radius: 10px;
 }
@@ -69,6 +76,11 @@ html {
   justify-content: flex-start;
   align-items: center;
 }
+@media only screen and (max-width: 1200px) {
+  .search {
+    margin: 4rem 0;
+  }
+}
 .search__results {
   width: 50%;
   margin: 2rem 0;
@@ -77,17 +89,48 @@ html {
   align-items: center;
   border-bottom: 1px solid rgb(182, 182, 182);
 }
+@media only screen and (max-width: 1200px) {
+  .search__results {
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .search__results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 500px) {
+  .search__results {
+    grid-template-columns: none;
+  }
+}
 .search__results-userImg {
   display: flex;
   align-items: center;
 }
+@media only screen and (max-width: 1000px) {
+  .search__results-userImg {
+    grid-column: 1/2;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .search__results__post-count {
+    grid-column: 2/3;
+  }
+}
 .search__results > * {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin: 1.2rem;
 }
 .search__results > button {
   padding: 1.2rem;
   border-radius: 10px;
+}
+@media only screen and (max-width: 1000px) {
+  .search__results > button {
+    grid-row: 2/3;
+  }
 }
 .search__results-img {
   height: 4rem;
@@ -96,22 +139,37 @@ html {
   margin: 1rem;
 }
 .search__results-name:link, .search__results-name:visited {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   text-decoration: none;
   color: #171717;
 }
 
 .searchbox {
-  width: 50%;
+  width: 70%;
   margin-bottom: 2rem;
+}
+@media only screen and (max-width: 1200px) {
+  .searchbox {
+    width: 80%;
+  }
 }
 .searchbox-input {
   width: 85%;
   border: 1px solid rgb(182, 182, 182);
   padding: 1.4rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   border-top-left-radius: 100px;
   border-bottom-left-radius: 100px;
+}
+@media only screen and (max-width: 1200px) {
+  .searchbox-input {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .searchbox-input {
+    width: 60%;
+  }
 }
 .searchbox-input:focus {
   box-shadow: 0 0 0.8rem rgba(23, 23, 23, 0.4);
@@ -122,7 +180,7 @@ html {
 
 .search-btn {
   padding: 1.4rem 2.5rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
 }
@@ -131,6 +189,12 @@ html {
   margin: 4rem auto;
   width: 60%;
 }
+@media only screen and (max-width: 700px) {
+  .profile {
+    margin: 2rem, auto;
+    width: 80%;
+  }
+}
 .profile__details {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
@@ -138,8 +202,18 @@ html {
   box-shadow: 0 1rem 2rem rgba(23, 23, 23, 0.2);
   border-radius: 15px;
 }
+@media only screen and (max-width: 700px) {
+  .profile__details {
+    align-content: center;
+  }
+}
 .profile__picture {
   margin: 2rem auto;
+}
+@media only screen and (max-width: 500px) {
+  .profile__picture {
+    margin: 2rem, auto;
+  }
 }
 .profile__picture-img {
   width: 14rem;
@@ -147,14 +221,27 @@ html {
   object-fit: cover;
   height: 14rem;
 }
+@media only screen and (max-width: 700px) {
+  .profile__picture-img {
+    margin: 0.5rem auto;
+    width: 12rem;
+    height: 12rem;
+  }
+}
 .profile__picture-username {
   margin: 1rem;
   font-size: 1.8rem !important;
 }
 .profile__stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+  margin: 2rem;
+}
+@media only screen and (max-width: 500px) {
+  .profile__stats {
+    margin: 2rem;
+  }
 }
 .profile__stats > * {
   align-self: center;
@@ -175,12 +262,19 @@ html {
 }
 
 .profile-btn {
-  grid-column: 1/3;
   align-self: center;
   justify-self: stretch;
   padding: 1rem 2rem;
   border-radius: 10px;
   font-size: 1.6rem;
+}
+
+.post-btn {
+  grid-column: 1/2;
+}
+
+.change-profile {
+  grid-column: 2/3;
 }
 
 .btn {
@@ -293,6 +387,11 @@ html {
   margin: 2rem auto;
   font-size: 1.4rem;
 }
+@media only screen and (max-width: 700px) {
+  .home {
+    width: 90%;
+  }
+}
 .home-post {
   margin: 6rem 2rem;
   border: 1px solid gray;
@@ -302,6 +401,11 @@ html {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+}
+@media only screen and (max-width: 1000px) {
+  .home-post {
+    grid-template-columns: none;
+  }
 }
 .home__img {
   object-fit: cover;
@@ -350,6 +454,11 @@ html {
   border: 1px solid rgba(23, 23, 23, 0.2);
   max-height: 30rem;
   overflow: scroll;
+}
+@media only screen and (max-width: 1000px) {
+  .home__comments {
+    max-height: 15rem;
+  }
 }
 .home__comments-imguser {
   display: flex;

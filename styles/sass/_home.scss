@@ -6,6 +6,10 @@
     margin: 2rem auto;
     font-size: 1.4rem;
 
+    @media only screen and (max-width: $sw-medium) {
+        width: 90%;
+    }
+
     &-post {
         margin: 6rem 2rem;
         border: 1px solid gray;
@@ -15,7 +19,13 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
+
+        @media only screen and (max-width: $sw-large) {
+            grid-template-columns: none;
+        }
+
     }
+
 
     &__img {
         object-fit: cover;
@@ -73,6 +83,10 @@
         border: 1px solid rgba($color-primary, 0.2);
         max-height: 30rem;
         overflow: scroll;
+
+        @media only screen and (max-width: $sw-large) {
+           max-height: 15rem; 
+        }
 
         &-imguser {
             display: flex;
