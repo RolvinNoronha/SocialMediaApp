@@ -37,6 +37,11 @@ html {
   background-color: #eeeeee;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
+@media only screen and (max-width: 500px) {
+  .header {
+    padding: 1.5rem;
+  }
+}
 .header__title {
   font-size: 3.2rem;
   text-decoration: none;
@@ -46,6 +51,7 @@ html {
   display: flex;
   align-items: center;
   font-size: 1.8rem;
+  margin-left: auto;
 }
 @media only screen and (max-width: 500px) {
   .header__links {
@@ -54,11 +60,13 @@ html {
 }
 .header__links-search {
   text-decoration: none;
+  font-size: 1.8rem;
   color: #171717;
   margin-right: 1.2rem;
 }
 .header__links-profile {
   text-decoration: none;
+  font-size: 1.8rem;
   color: #171717;
   margin-right: 1.2rem;
 }
@@ -69,6 +77,61 @@ html {
   border-radius: 10px;
 }
 
+@media only screen and (max-width: 500px) {
+  .dropdown {
+    position: relative;
+  }
+  .dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.25rem);
+    background-color: #eeeeee;
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    width: 16rem;
+    transform: translateY(0);
+    animation: dropdownAnimation 0.2s ease-in;
+  }
+  .dropdown-menu > * {
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid black;
+  }
+  .dropdown-btn {
+    border: none;
+  }
+  .dropdown-btn > p {
+    background-color: #eeeeee;
+  }
+  .dropdown-btn:hover {
+    cursor: pointer;
+  }
+  @keyframes dropdownAnimation {
+    0% {
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  .arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    padding: 3px;
+  }
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+}
 .search {
   margin: 4rem;
   display: flex;

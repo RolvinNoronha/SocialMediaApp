@@ -7,6 +7,10 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 
 
+    @media only screen and (max-width: $sw-small) {
+        padding: 1.5rem;
+    }
+
     &__title {
         font-size: 3.2rem;
         text-decoration: none;
@@ -17,20 +21,23 @@
         display: flex;
         align-items: center;
         font-size: 1.8rem;
+        margin-left: auto;
 
         @media only screen and (max-width: $sw-small) {
             display: none;
             
-        }
+        } 
         
         &-search {
             text-decoration: none;
+            font-size: 1.8rem;
             color: $color-primary;
             margin-right: 1.2rem;
         }
 
         &-profile {
             text-decoration: none;
+            font-size: 1.8rem;
             color: $color-primary;
             margin-right: 1.2rem;
         }
@@ -43,4 +50,71 @@
     font-size: 1.6rem;
     padding: 1rem 1.8rem;
     border-radius: 10px;
+}
+
+@media only screen and (max-width: $sw-small){
+    .dropdown {
+        position: relative;
+
+        &-menu {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 0.25rem);
+            background-color: $color-secondary;
+            display: flex;
+            flex-direction: column;
+            padding: 1.4rem;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+            width: 16rem;
+            transform: translateY(0);
+            animation: dropdownAnimation 0.2s ease-in;
+        }
+
+        &-menu > * {
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid black;
+        }
+
+        &-btn {
+            border: none;
+
+            & > p {
+                background-color: $color-secondary;
+            }
+        }
+
+        &-btn:hover {
+            cursor: pointer;
+        }
+    }
+
+    @keyframes dropdownAnimation {
+        0% {
+            transform: translateY(-10px);
+        }
+
+        50% {
+            transform: translateY(-5px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .arrow {
+        border: solid black;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+        padding: 3px;
+    }
+
+
+    .down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    }
 }
