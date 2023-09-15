@@ -53,7 +53,7 @@ export default function Home() {
             getFollowingData();
             getData();
         })
-    }, [])
+    }, [db])
 
     return <div className="home">
         {posts.map(post => {

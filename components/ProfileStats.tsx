@@ -25,7 +25,7 @@ export default function ProfileStats() {
             unsubscribe();
             getFollowCount();
         }
-    }, [])
+    }, [db])
 
     return(
         <div className="profile__stats">
@@ -38,7 +38,6 @@ export default function ProfileStats() {
                 <p className="text">{followCount}</p>
             </div>
             <button onClick={() => setShow(true)} className="btn profile-btn post-btn">Post</button>
-            <button className="btn profile-btn change-profile">Change Profile</button>
             <Modal show={show} setShow={setShow} />
         </div>
     );

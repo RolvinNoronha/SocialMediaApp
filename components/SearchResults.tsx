@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, DocumentData, getDocs, query, QueryDocumentSnapshot, where } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, DocumentData, getDocs, query, QueryDocumentSnapshot, setDoc, where } from "firebase/firestore";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { db } from "../lib/Firebase";
@@ -45,7 +45,7 @@ export default function SearchResults({ result } : Props) {
         getFollowingData();
         getPostData();
         getFollowData();
-    })
+    }, [db])
 
     async function handleFollow(userId : string, username : string){
         const id = localStorage.getItem("uid");
@@ -58,10 +58,13 @@ export default function SearchResults({ result } : Props) {
         }
         else {
             if (id) {
-                const docRef = await addDoc(collection(db, "users", id, "following"), {
+                const data = {
                     name: username,
                     userid: result.id,
-                }) 
+                }
+                const docRef = doc(db, "users", id, "following", result.id);
+                await setDoc(docRef, data);
+
                 setIsFollowing(true);
             }
         }

@@ -30,12 +30,17 @@ html {
 }
 
 .sign-in {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     margin: 5rem;
+    margin-top: 10rem;
 }
 
 .signin-btn {
-    padding: 1rem 2rem;
-    font-size: 1.4rem;
+    margin-top: 1.6rem;
+    padding: 1.8rem 2.4rem;
+    font-size: 2rem;
     border-radius: 10px;
 }

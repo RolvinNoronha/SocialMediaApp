@@ -1,13 +1,24 @@
 import { useRouter } from "next/router";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { auth } from "../lib/Firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../lib/Firebase";
+import Image from "next/image";
+import { useEffect } from "react";
 
 export default function Login() {
 
-  const router = useRouter();
+    const router = useRouter();
     const provider = new GoogleAuthProvider();
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                router.push("/home");
+            }
+        });
+
+    }, [auth])
 
     async function login() {
       signInWithPopup(auth, provider)
@@ -32,7 +43,7 @@ export default function Login() {
 
   return (
     <div className="sign-in">
-        <h1 className="heading-h1">Sign In with Google</h1>
+        <Image width={500} height={150} src={"/../public/google-signin-button.png"} alt="Sign In with Google" />
         <button onClick={login} className="btn signin-btn">Sign In</button>
     </div>
   )
